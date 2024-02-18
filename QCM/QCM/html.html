@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Votre Site de QCM</title>
+    <link rel="stylesheet" href="qcm.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Test de Culture Générale</h1>
+    </header>
+
+    <nav></nav>
+
+    <main>
+      <script src="qcm.js"></script>
+
+      <section class="qcm-section">
+        <h2>Questions</h2>
+        <div id="question-container"></div>
+        <div id="choices-container"></div>
+
+        <form id="qcm-form" onsubmit="verifierReponse(); return false;"></form>
+      </section>
+
+      <section id="fin-section" class="hidden">
+        <h2>Fin du test</h2>
+        <p id="note-text">Votre note : <span id="note">0</span>%</p>
+        <button id="recommencer-button" onclick="recommencer()">
+          Recommencer
+        </button>
+      </section>
+    </main>
+  </body>
+</html>
