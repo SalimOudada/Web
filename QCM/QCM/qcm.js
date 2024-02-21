@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   afficherQuestion();
 });
 
+
+//ajouter une fct pr ajouter nous meme les questions
 var questions = [
   {
     question: "Quelle est la capitale du Japon ?",
@@ -98,7 +100,7 @@ function afficherPageFin() {
   var finSection = document.getElementById("fin-section");
   finSection.classList.remove("hidden");
 
-  var note = (nombreBonnesReponses / nombreTotalQuestions) * 10;
+  var note = (nombreBonnesReponses / nombreTotalQuestions) * 100;
   var noteElement = document.getElementById("note");
   noteElement.textContent = note.toFixed(2);
 }
@@ -153,4 +155,46 @@ function recommencer() {
 function cacherSectionFin() {
   var finSection = document.getElementById("fin-section");
   finSection.classList.add("hidden");
+}
+
+
+function ShowForm() {
+  
+  var AddForm = document.getElementById("ajouter-question-container");
+  AddForm.classList.remove("hidden");
+}
+function HideForm() 
+{ 
+  var AddForm = document.getElementById("ajouter-question-container");
+  AddForm.classList.add("hidden");
+}
+
+function AddQuestion() {
+  var NewQuestion = document.getElementById("nouvelle-question").value;
+  var choix = [];
+
+  for (var i = 1; i <= 4; i++) {
+    var ChoiceValue = document.getElementById("choix" + i).value;
+    choix.push(ChoiceValue);
+    console.log('AAAAAAAAAAAAA')
+    console.log(choix);
+  }
+
+  var Answer = document.getElementById("reponse-correcte").value.toLowerCase();
+
+  if (!/^[a-d]$/.test(Answer)) {
+    alert("Veuillez entrer une réponse correcte valide (a, b, c, d).");
+    return;
+  }
+
+  var nouvelleQuestionObj = {
+    question: NewQuestion,
+    choix: choix,
+    reponseCorrecte: Answer
+  };
+
+  questions.push(nouvelleQuestionObj);
+  document.getElementById("ajouter-question-form").reset();
+
+  HideForm();
 }

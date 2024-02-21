@@ -5,23 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Votre Site de QCM</title>
     <link rel="stylesheet" href="qcm.css" />
+    <script src="qcm.js"></script>
   </head>
   <body>
     <header>
       <h1>Test de Culture Générale</h1>
     </header>
 
-    <nav></nav>
-
     <main>
-      <script src="qcm.js"></script>
-
       <section class="qcm-section">
         <h2>Questions</h2>
+        <button id="ajouter-question-button" onclick="ShowForm()">
+          Ajouter une question
+        </button>
         <div id="question-container"></div>
         <div id="choices-container"></div>
 
         <form id="qcm-form" onsubmit="verifierReponse(); return false;"></form>
+      </section>
+
+      <section id="ajouter-question-container" class="hidden">
+        <h2>Ajouter une nouvelle question</h2>
+        <form id="ajouter-question-form" onsubmit="ShowForm(); return false;">
+          <label for="nouvelle-question">Question :</label>
+          <input type="text" id="nouvelle-question" required />
+
+          <label for="choix1">Choix 1 :</label>
+          <input type="text" id="choix1" required />
+
+          <label for="choix2">Choix 2 :</label>
+          <input type="text" id="choix2" required />
+
+          <label for="choix3">Choix 3 :</label>
+          <input type="text" id="choix3" required />
+
+          <label for="choix4">Choix 4 :</label>
+          <input type="text" id="choix4" required />
+
+          <label for="reponse-correcte">Réponse correcte (a, b, c, d) :</label>
+          <input type="text" id="reponse-correcte" required />
+
+          <button type="submit" onclick="AddQuestion()">
+            Ajouter la question
+          </button>
+        </form>
       </section>
 
       <section id="fin-section" class="hidden">
