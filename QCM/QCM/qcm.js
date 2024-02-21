@@ -18,44 +18,44 @@ var questions = [
   {
     question: 'Qui a écrit "Romeo et Juliette" ?',
     choix: ["a) Charles Dickens", "b) William Shakespeare", "c) Jane Austen", "d) Mark Twain"],
-    reponseCorrecte: "b",
-  },
-  {
-    question: "Quelle est la plus haute montagne du monde ?",
-    choix: ["a) Mont Everest", "b) Mont Kilimandjaro", "c) Mont McKinley", "d) Mont Blanc"],
-    reponseCorrecte: "a",
-  },
-  {
-    question: "Quel est le plus grand désert du monde ?",
-    choix: ["a) Désert du Sahara", "b) Désert de Gobi", "c) Désert de l'Arabie", "d) Désert d'Atacama"],
-    reponseCorrecte: "a",
-  },
-  {
-    question: "Quelle est la capitale de la France ?",
-    choix: ["a) Rome", "b) Paris", "c) Berlin", "d) Londres"],
-    reponseCorrecte: "b",
-  },
-  {
-    question: "Qui a peint la Joconde ?",
-    choix: ["a) Vincent van Gogh", "b) Pablo Picasso", "c) Leonardo da Vinci", "d) Michel-Ange"],
-    reponseCorrecte: "c",
-  },
-  {
-    question: "Quelle est la monnaie officielle du Japon ?",
-    choix: ["a) Won", "b) Yen", "c) Yuan", "d) Baht"],
-    reponseCorrecte: "b",
-  },
-  {
-    question: "En quelle année a eu lieu la Première Guerre mondiale ?",
-    choix: ["a) 1905-1910", "b) 1914-1918", "c) 1939-1945", "d) 1870-1871"],
-    reponseCorrecte: "b",
-  },
-  {
-    question: "Quel est le plus grand mammifère terrestre ?",
-    choix: ["a) Éléphant d'Afrique", "b) Girafe", "c) Baleine bleue", "d) Rhinocéros blanc"],
-    reponseCorrecte: "c",
-  },
-];
+    reponseCorrecte: "b"} ]
+  // },
+  // {
+  //   question: "Quelle est la plus haute montagne du monde ?",
+  //   choix: ["a) Mont Everest", "b) Mont Kilimandjaro", "c) Mont McKinley", "d) Mont Blanc"],
+  //   reponseCorrecte: "a",
+  // },
+  // {
+  //   question: "Quel est le plus grand désert du monde ?",
+  //   choix: ["a) Désert du Sahara", "b) Désert de Gobi", "c) Désert de l'Arabie", "d) Désert d'Atacama"],
+  //   reponseCorrecte: "a",
+  // },
+  // {
+  //   question: "Quelle est la capitale de la France ?",
+  //   choix: ["a) Rome", "b) Paris", "c) Berlin", "d) Londres"],
+  //   reponseCorrecte: "b",
+  // },
+  // {
+  //   question: "Qui a peint la Joconde ?",
+  //   choix: ["a) Vincent van Gogh", "b) Pablo Picasso", "c) Leonardo da Vinci", "d) Michel-Ange"],
+  //   reponseCorrecte: "c",
+  // },
+  // {
+  //   question: "Quelle est la monnaie officielle du Japon ?",
+  //   choix: ["a) Won", "b) Yen", "c) Yuan", "d) Baht"],
+  //   reponseCorrecte: "b",
+  // },
+  // {
+  //   question: "En quelle année a eu lieu la Première Guerre mondiale ?",
+  //   choix: ["a) 1905-1910", "b) 1914-1918", "c) 1939-1945", "d) 1870-1871"],
+  //   reponseCorrecte: "b",
+  // },
+  // {
+  //   question: "Quel est le plus grand mammifère terrestre ?",
+  //   choix: ["a) Éléphant d'Afrique", "b) Girafe", "c) Baleine bleue", "d) Rhinocéros blanc"],
+  //   reponseCorrecte: "c",
+  // },
+
 
 var questionActuelle = 0;
 var nombreBonnesReponses = 0;
@@ -158,15 +158,15 @@ function cacherSectionFin() {
 }
 
 
-function ShowForm() {
+function ShowFormPopUp() {
   
-  var AddForm = document.getElementById("ajouter-question-container");
-  AddForm.classList.remove("hidden");
+  document.getElementById('overlay').style.display = 'block';
+  document.getElementById('ajouter-question-container').style.display = 'block';
 }
-function HideForm() 
+function HideFormPopUp() 
 { 
-  var AddForm = document.getElementById("ajouter-question-container");
-  AddForm.classList.add("hidden");
+  document.getElementById('overlay').style.display = 'none';
+  document.getElementById('ajouter-question-container').style.display = 'none';
 }
 
 function AddQuestion() {
@@ -196,5 +196,7 @@ function AddQuestion() {
   questions.push(nouvelleQuestionObj);
   document.getElementById("ajouter-question-form").reset();
 
-  HideForm();
+  nombreTotalQuestions += 1
+
+  HideFormPopUp();
 }

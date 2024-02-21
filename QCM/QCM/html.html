@@ -15,7 +15,7 @@
     <main>
       <section class="qcm-section">
         <h2>Questions</h2>
-        <button id="ajouter-question-button" onclick="ShowForm()">
+        <button id="ajouter-question-button" onclick="ShowFormPopUp()">
           Ajouter une question
         </button>
         <div id="question-container"></div>
@@ -24,9 +24,14 @@
         <form id="qcm-form" onsubmit="verifierReponse(); return false;"></form>
       </section>
 
-      <section id="ajouter-question-container" class="hidden">
+      <div id="overlay" class="overlay"></div>
+
+      <section id="ajouter-question-container" class="popup hidden">
         <h2>Ajouter une nouvelle question</h2>
-        <form id="ajouter-question-form" onsubmit="ShowForm(); return false;">
+        <form
+          id="ajouter-question-form"
+          onsubmit="AddQuestion(); return false;"
+        >
           <label for="nouvelle-question">Question :</label>
           <input type="text" id="nouvelle-question" required />
 
@@ -45,9 +50,8 @@
           <label for="reponse-correcte">Réponse correcte (a, b, c, d) :</label>
           <input type="text" id="reponse-correcte" required />
 
-          <button type="submit" onclick="AddQuestion()">
-            Ajouter la question
-          </button>
+          <button type="submit">Ajouter la question</button>
+          <button type="button" onclick="HideFormPopUp()">Fermer</button>
         </form>
       </section>
 
