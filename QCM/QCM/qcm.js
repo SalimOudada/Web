@@ -57,6 +57,15 @@ var questions = [
   // },
 
 
+
+
+  function MainMenu(){
+    var accueilSection = document.getElementById("qcm-section");
+    accueilSection.classList.add("hidden");
+  
+    var qcmSection = document.getElementById("accueil-section");
+    qcmSection.classList.remove("hidden");
+  }
 var questionActuelle = 0;
 var nombreBonnesReponses = 0;
 var nombreTotalQuestions = questions.length;
@@ -159,7 +168,6 @@ function cacherSectionFin() {
 
 
 function ShowFormPopUp() {
-  
   document.getElementById('overlay').style.display = 'block';
   document.getElementById('ajouter-question-container').style.display = 'block';
 }

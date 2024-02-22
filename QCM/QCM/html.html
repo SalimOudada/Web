@@ -2,65 +2,32 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Votre Site de QCM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="qcm.css" />
     <script src="qcm.js"></script>
-  </head>
-  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
     <header>
       <h1>Test de Culture Générale</h1>
     </header>
 
+
     <main>
-      <section class="qcm-section">
-        <h2>Questions</h2>
-        <button id="ajouter-question-button" onclick="ShowFormPopUp()">
-          Ajouter une question
+      <section id="accueil-section" > <!-- Utilisez l'ID "accueil-section" -->
+        <a href="Quiz.html" id="start-quiz" class="button-link">
+          Commencer un quiz
+        </a>
+        <button id="modif-quiz" onclick="ModifQuestions()">
+          Modifier les questions
         </button>
-        <div id="question-container"></div>
-        <div id="choices-container"></div>
-
-        <form id="qcm-form" onsubmit="verifierReponse(); return false;"></form>
+        <button id="create-quiz" onclick="CreateQuiz()">
+          Créer un quiz
+        </button>
       </section>
 
-      <div id="overlay" class="overlay"></div>
 
-      <section id="ajouter-question-container" class="popup hidden">
-        <h2>Ajouter une nouvelle question</h2>
-        <form
-          id="ajouter-question-form"
-          onsubmit="AddQuestion(); return false;"
-        >
-          <label for="nouvelle-question">Question :</label>
-          <input type="text" id="nouvelle-question" required />
-
-          <label for="choix1">Choix 1 :</label>
-          <input type="text" id="choix1" required />
-
-          <label for="choix2">Choix 2 :</label>
-          <input type="text" id="choix2" required />
-
-          <label for="choix3">Choix 3 :</label>
-          <input type="text" id="choix3" required />
-
-          <label for="choix4">Choix 4 :</label>
-          <input type="text" id="choix4" required />
-
-          <label for="reponse-correcte">Réponse correcte (a, b, c, d) :</label>
-          <input type="text" id="reponse-correcte" required />
-
-          <button type="submit">Ajouter la question</button>
-          <button type="button" onclick="HideFormPopUp()">Fermer</button>
-        </form>
-      </section>
-
-      <section id="fin-section" class="hidden">
-        <h2>Fin du test</h2>
-        <p id="note-text">Votre note : <span id="note">0</span>%</p>
-        <button id="recommencer-button" onclick="recommencer()">
-          Recommencer
-        </button>
       </section>
     </main>
   </body>
