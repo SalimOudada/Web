@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//ajouter une fct pr ajouter nous meme les questions
 var questions = [
   {
     question: "Quelle est la capitale du Japon ?",
@@ -58,14 +57,6 @@ var questions = [
 
 
 
-
-  function MainMenu(){
-    var accueilSection = document.getElementById("qcm-section");
-    accueilSection.classList.add("hidden");
-  
-    var qcmSection = document.getElementById("accueil-section");
-    qcmSection.classList.remove("hidden");
-  }
 var questionActuelle = 0;
 var nombreBonnesReponses = 0;
 var nombreTotalQuestions = questions.length;

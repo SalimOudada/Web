@@ -1,0 +1,104 @@
+/* ... Autres styles ... */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#qcm-section,
+#fin-section {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #3498db;
+}
+
+button {
+  padding: 10px;
+  margin: 10px 10px; /* Ajout de la marge pour espacer les boutons verticalement */
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.button-link {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #27ae60;
+  border-radius: 5px;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#ajouter-question-container {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+#ajouter-question-form label,
+#ajouter-question-form input {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+#ajouter-question-form button {
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#ajouter-question-form button:hover {
+  background-color: #2c81ba;
+}
+
+.hidden{
+  display: none;
+}
