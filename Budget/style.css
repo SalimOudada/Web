@@ -1,0 +1,49 @@
+/* Style pour le fond du body avec un dégradé */
+body {
+    background: linear-gradient(to left, #1c59a7, #899edf); 
+    margin: 0; /* Assure qu'il n'y a pas de marge par défaut autour du body */
+    font-family: Arial, sans-serif; /* Police de base pour une meilleure lisibilité */
+}
+
+/* Style pour l'en-tête */
+header {
+    background-color: #000000; /* Couleur de fond pour l'en-tête */
+    color: white; /* Couleur du texte */
+    padding: 10px; /* Espacement autour du texte */
+    text-align: center; /* Centre le texte */
+    font-size: 20px; /* Taille de la police pour le texte */
+}
+
+/* Style pour le conteneur dans l'en-tête */
+.container {
+    max-width: 1200px; /* Largeur maximale du conteneur */
+    margin: 0 auto; /* Centre le conteneur horizontalement */
+    padding: 0 20px; /* Espacement interne */
+    display: flex; /* Utilisation de Flexbox pour l'alignement */
+    justify-content: space-between; /* Espacement entre les éléments */
+    align-items: center; /* Alignement vertical des éléments */
+}
+
+/* Style pour les liens dans la barre de navigation */
+nav ul {
+    list-style: none; /* Supprime les puces de la liste */
+    padding: 0; /* Supprime le padding par défaut */
+    margin: 0; /* Supprime la marge par défaut */
+    display: flex; /* Utilisation de Flexbox pour aligner les éléments horizontalement */
+}
+
+nav ul li {
+    margin-left: 20px; /* Espacement entre les éléments */
+}
+
+nav ul li a {
+    color: white; /* Couleur du texte des liens */
+    text-decoration: none; /* Supprime le soulignement des liens */
+    padding: 10px; /* Espacement autour du texte des liens */
+    display: block; /* Permet au padding de fonctionner correctement */
+}
+
+nav ul li a:hover {
+    background-color: #555; /* Couleur de fond au survol */
+    border-radius: 4px; /* Coins arrondis pour un effet visuel */
+}
