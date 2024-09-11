@@ -20,6 +20,37 @@
             </div>
         </nav>
     </header>
-    <!-- Le reste de votre contenu -->
+    <main>
+        <div class="container">
+            <h2>Profit Calculator</h2>
+            <form id="profitForm">
+                <div class="form-group">
+                    <label for="purchasePrice">Purchase Price:</label>
+                    <input type="number" id="purchasePrice" name="purchasePrice" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="salePrice">Sale Price:</label>
+                    <input type="number" id="salePrice" name="salePrice" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="shippingCost">Shipping Cost:</label>
+                    <input type="number" id="shippingCost" name="shippingCost" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="packagingFees">Packaging Fees:</label>
+                    <input type="number" id="packagingFees" name="packagingFees" step="0.01" required>
+                </div>
+
+                <button type="submit">Calculate</button>
+            </form>
+            <div id="result">
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
