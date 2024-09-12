@@ -1,4 +1,7 @@
 
+html{
+    font-family: Poppins,'Segoe UI', sans-serif;
+}
 
 body {
     background: linear-gradient(to left, #1c59a7, #899edf);
@@ -42,12 +45,50 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+#SignIn {
+    position: absolute;
+    top: 44px;
+    right: 70px;
+    width: 100px;
+    height: 40px;
+    background-color: hsl(214, 72%, 32%);
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+}
+
+#SignIn:hover {
+    background-color: #1c59a7;
+    transform: scale(1.05);
+
+}
+
+
+
 .container {
+    display: flex;;
+    align-items: center;
+    min-height: 5vh;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
 }
+
+
+.pomme {
+    display: flex;;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
 
 form {
     display: flex;
@@ -110,6 +151,9 @@ button[type="submit"]:hover {
 #result {
     margin-top: 20px;
     padding: 20px;
+    height: 20px;
+    width: 15%;
+    text-align: center;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -117,3 +161,58 @@ button[type="submit"]:hover {
     font-size: 18px;
     color: #333;
 }
+
+@media (max-width: 768px) {
+    form {
+        padding: 20px;
+        width: 100%;
+    }
+
+    nav ul li{
+        display: block;
+        margin: 10px 0;
+
+    };
+
+    .container {
+        padding: 20px;
+        padding-right: 20px;
+
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+    
+}
+
+
+ul.top-right-menu {
+    list-style: none;
+    position: absolute;
+    top: 44px;
+    right: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+ul.top-right-menu li {
+    display: inline;
+}
+
+ul.top-right-menu a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: hsl(214, 72%, 32%);
+    color: var(--base-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+ul.top-right-menu a.button:hover {
+    background-color: #174a8c;
+    transform: scale(1.05);}
+
+

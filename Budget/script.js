@@ -14,9 +14,15 @@ document.getElementById('profitForm').addEventListener('submit', function(event)
     
     const profit = salePrice - totalCosts;
 
-    document.getElementById('result').innerHTML = `
-        <h3>Results:</h3>
-        <p><strong>Total Costs:</strong> $${totalCosts.toFixed(2)}</p>
-        <p><strong>Profit:</strong> $${profit.toFixed(2)}</p>
-    `;
+    const resultDiv = document.getElementById('result');
+    if (profit > 0) {
+        resultDiv.textContent = `Profit: $${profit.toFixed(2)}`;
+        resultDiv.style.color = 'green';
+    } else if (profit < 0) {
+        resultDiv.textContent = `Loss: $${Math.abs(profit).toFixed(2)}`;
+        resultDiv.style.color = 'red';
+    } else {
+        resultDiv.textContent = "No profit, no loss.";
+        resultDiv.style.color = 'black';
+    }
 });
