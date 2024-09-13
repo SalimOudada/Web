@@ -17,6 +17,7 @@ app.post('/users', async (req, res) => {
         console.log(hashedPassword)
         const user = {name: req.body.name, password: hashedPassword}
         users.push(user)
+        push("User Created")
         res.status(201).send()
     } catch {
         res.status(500).send()

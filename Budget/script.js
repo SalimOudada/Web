@@ -14,15 +14,19 @@ document.getElementById('profitForm').addEventListener('submit', function(event)
     
     const profit = salePrice - totalCosts;
 
+    result.style.display = 'block';
+
     const resultDiv = document.getElementById('result');
     if (profit > 0) {
-        resultDiv.textContent = `Profit: $${profit.toFixed(2)}`;
         resultDiv.style.color = 'green';
+        resultDiv.textContent = "Your ebay fees are: " + (ebayFeePercentage*100).toFixed(2) + "% , Profit: $" + profit.toFixed(2);
+
     } else if (profit < 0) {
-        resultDiv.textContent = `Loss: $${Math.abs(profit).toFixed(2)}`;
+        resultDiv.textContent = "Your ebay fees are: " + (ebayFeePercentage*100).toFixed(2) + "% , Lost: $" + Math.abs(profit).toFixed(2);
         resultDiv.style.color = 'red';
     } else {
-        resultDiv.textContent = "No profit, no loss.";
+        resultDiv.textContent = "Your ebay fees are: " + (ebayFeePercentage*100).toFixed(2) + "% , Profit: $" + profit.toFixed(2);
         resultDiv.style.color = 'black';
+
     }
 });

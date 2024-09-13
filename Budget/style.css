@@ -1,19 +1,26 @@
+:root{
+    --accent-color: hsl(212, 93%, 39%);
+    --base-color: #ffffff;
+    --text-color: #01021d;
+    --input-color: hsla(212, 93%, 39%, 0.185);
+    --hover-color:  #1c59a7;
+}
+
 
 html{
     font-family: Poppins,'Segoe UI', sans-serif;
 }
 
 body {
-    background: linear-gradient(to left, #1c59a7, #899edf);
+    background: linear-gradient(to left, var(--input-color), var(--base-color));
     font-family: Arial, sans-serif;
-    color: #333;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #000000;
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--base-color);
     padding: 10px;
     text-align: center;
 }
@@ -45,62 +52,30 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-#SignIn {
-    position: absolute;
-    top: 44px;
-    right: 70px;
-    width: 100px;
-    height: 40px;
-    background-color: hsl(214, 72%, 32%);
-    border: none;
-    text-decoration: none;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    border-radius: 4px;
-}
 
-#SignIn:hover {
-    background-color: #1c59a7;
-    transform: scale(1.05);
-
-}
 
 
 
 .container {
     display: flex;;
     align-items: center;
+    justify-content: space-around;
     min-height: 5vh;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-
-.pomme {
-    display: flex;;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
     box-sizing: border-box;
 }
 
 
 
-form {
+form{
+    width: min(400px, 100%);
+    margin-top: 20px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-    width: 100%;
-    max-width: 600px;
+    gap: 10px;
 }
 
 .form-group {
@@ -108,27 +83,38 @@ form {
     margin-bottom: 20px;
 }
 
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 18px;
+form label {
+    flex-shrink: 0;
+    height: 50px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: 500;
 }
 
 .form-group input[type="number"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
     box-sizing: border-box;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    min-width: 0;
+    height: 50px;
+    width: 100%;
+    padding: 1em;
+    font: inherit;
+    border : 2px solid var(--input-color);
+    background-color: var(--input-color);
+    border-radius: 10px 10px 10px 10px;
+    transition: 150ms ease;
+}
+
+form input:hover{
+    border : 2px solid var(--accent-color);
 }
 
 .form-group input[type="number"]:focus {
-    border-color: #1c59a7;
-    box-shadow: 0 0 8px rgba(28, 89, 167, 0.2);
     outline: none;
+    border : 2px solid var(--accent-color);
+    transition: 200ms ease;
+    background-color: var(--base-color);
 }
 
 button[type="submit"] {
@@ -149,10 +135,15 @@ button[type="submit"]:hover {
 }
 
 #result {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     margin-top: 20px;
     padding: 20px;
     height: 20px;
-    width: 15%;
+    width: 50%;
     text-align: center;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -181,10 +172,30 @@ button[type="submit"]:hover {
     }
 
     button[type="submit"] {
-        width: 100%;
+        width: 100%;}
+
+        body{
+            margin: 0;
+            padding: 0;
+            }
+        
+        .container{
+        transition: 0.5s;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        }
+        #result{
+            display: none;
+            position: fixed;
+            position:relative;
+            
+        }
+        
     }
     
-}
+
 
 
 ul.top-right-menu {
@@ -201,7 +212,10 @@ ul.top-right-menu li {
 }
 
 ul.top-right-menu a.button {
-    display: inline-block;
+    display: block;
+    position: fixed;
+    right:5%;
+    top: 3%;
     padding: 10px 20px;
     background-color: hsl(214, 72%, 32%);
     color: var(--base-color);
@@ -216,3 +230,10 @@ ul.top-right-menu a.button:hover {
     transform: scale(1.05);}
 
 
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
