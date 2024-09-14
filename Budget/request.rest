@@ -6,7 +6,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "John Doe",
+    "email": "John Doe",
     "password": "password"}
 ###
 
@@ -14,7 +14,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "salim",
+    "email": "salim",
     "password": "123"}
 
 
@@ -25,7 +25,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "pomme",
+    "email": "pomme",
     "password": "456"}
 
 
@@ -36,7 +36,7 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "name": "John Doe",
+    "email": "John Doe",
     "password": "password"
 }
 ###
@@ -45,8 +45,8 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "name": "salim",
-    "password": "password"
+    "email": "salim.oud@hotmail.fr",
+    "password": "123"
 }
 ###
 
@@ -54,6 +54,6 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "name": "salim",
+    "email": "salim",
     "password": "123"
 }

@@ -197,12 +197,20 @@ button[type="submit"]:hover {
     
 
 
+.top-left-menu {
+    color: var(--base-color);
+    position: relative;
+    top: 0;
+    left: 20px;
+    
+
+}
 
 ul.top-right-menu {
     list-style: none;
-    position: absolute;
+    position: re;
     top: 44px;
-    right: 20px;
+    right: 100px;
     padding: 0;
     margin: 0;
 }
