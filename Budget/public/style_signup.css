@@ -42,7 +42,7 @@ h3{
     font-size: 3em;
     text-transform: uppercase;
     font-weight: 900;
-    position: absolute;
+    position: relative;
     top: 10px;
     left: 10px;
 }
