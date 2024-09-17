@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // Serve static files f
 
 // MongoDB connection
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mydatabase';
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://vercel-admin-user:mCSmdMKPlGHcsuje@pomme.uycan.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Failed to connect to MongoDB:', err));
 
@@ -101,22 +101,46 @@ app.post('/sendEmail', async (req, res) => {
         from: 'mybudgetapp4@gmail.com',  
         to: 'mybudgetapp4@gmail.com',
         subject: subject,
-        text: `Message from : ${name}/${email} : 
-        
+        text: `Message from:
+    Name: ${name}
+    Email: ${email}
+    
+    Message:
     ${message}`
     };
 
+    const confirmationMailOptions = {
+        from: 'mybudgetapp4@gmail.com',
+        to: email,
+        subject: 'Message Confirmation',
+        text: `Dear ${name},
+    
+    Thank you for contacting us. We have received your message and will get back to you as soon as possible.
+
+    subject: ${subject}
+    Your message: ${message}
+    
+    Best regards,
+    The MyBudgetApp Team`
+    };
+    
+    
+
     try {
         await transporter.sendMail(mailOptions);
-        console.log('Email sent');
-        res.status(200).send('Email sent successfully');
+        console.log('Email to team sent');
+        
+        await transporter.sendMail(confirmationMailOptions);
+        console.log('Confirmation email sent');
+    
+        res.status(200).send('Emails sent successfully');
     } catch (error) {
-        console.error('Error sending email:', error);
-        res.status(500).send('Error sending email');
+        console.error('Error sending emails:', error);
+        res.status(500).send('Error sending emails');
     }
+    
 });
 
-// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

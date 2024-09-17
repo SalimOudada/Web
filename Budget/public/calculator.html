@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyBudget</title>
+    <link rel="stylesheet" href="styles_calculator.css" />
+  </head>
+  <body>
+    <a href="main.html" class="main-btn">Main Menu</a>
+    
+    <main>
+      <h1>Profit Calculator</h1> <!-- Title for the form -->
+      <form id="profitForm">
+        <div class="form-group">
+          <label for="purchasePrice">Purchase Price</label>
+          <input
+            type="number"
+            id="purchasePrice"
+            name="purchasePrice"
+            placeholder="Enter Purchase Price"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="salePrice">Sale Price</label>
+          <input
+            type="number"
+            id="salePrice"
+            name="salePrice"
+            placeholder="Enter Sale Price"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="shippingCost">Shipping Cost</label>
+          <input
+            type="number"
+            id="shippingCost"
+            name="shippingCost"
+            placeholder="Enter Shipping Cost"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="packagingFees">Packaging Fees</label>
+          <input
+            type="number"
+            id="packagingFees"
+            name="packagingFees"
+            placeholder="Enter Packaging Fees"
+            required
+          />
+        </div>
+
+        <button type="submit">Calculate</button>
+      </form>
+      <div id="result"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+/* Define color variables in :root */
+:root {
+    --primary-blue: #0288d1; /* Primary blue */
+    --light-blue: #81d4fa;  /* Lighter blue */
+    --medium-blue: hsl(199, 92%, 85%); /* Medium blue */
+    --dark-blue: #0277bd;   /* Dark blue */
+    --background-color: #e0f7fa; /* Light blue background */
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--primary-blue);
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links li {
+    margin: 0 1rem;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: var(--light-blue);
+}
+
+.signup-btn {
+    background-color: var(--light-blue);
+    color: #333;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem; /* Ajuster cette valeur selon tes besoins */
+}
+
+
+.signup-btn:hover {
+    background-color: var(--dark-blue);
+}
+
+/* Main Section */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 120px); /* Adjust based on header and footer height */
+    text-align: center;
+    background: var(--medium-blue);
+    padding: 2rem;
+}
+
+.hero {
+    color: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+    animation: fadeIn 2s ease-in;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.cta-btn {
+    background-color: var(--primary-blue);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: var(--dark-blue);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-blue);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: block;
+        text-align: center;
+    }
+
+    .navbar .nav-links li {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Image styling */
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 8px;
+}

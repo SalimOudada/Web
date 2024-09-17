@@ -1,81 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyBudget</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
     <header>
-      <nav>
-        <h1 class="top-left-menu">MyBudget</h1>
-        <div class="container">
-          <ul>
-            <li><a href="AboutUs.html">About us</a></li>
-            <li><a href="Contact.html">Contact</a></li>
-            <li><a href="AddExpense.html">Add expense</a></li>
-            <li><a href="reports.html">View reports</a></li>
-          </ul>
-          <ul class="top-right-menu">
-            <li><a href="Signin.html" class="button">Sign in</a></li>
-        </div>
-      </nav>
+        <nav class="navbar">
+            <div class="logo">MyBudget</div>
+            <ul class="nav-links">
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="AddExpense.html">Add Expense</a></li>
+                <li><a href="reports.html">View Reports</a></li>
+                <li><a href="calculator.html">Ebay Calculator</a></li>
+
+            </ul>
+            <a href="#signup" class="signup-btn">Sign Up</a>
+        </nav>
     </header>
+
     <main>
-      <div class="container">
-        <h2>Profit Calculator</h2>
-        <form id="profitForm">
-          <div class="form-group">
-            <label for="purchasePrice"></label>
-            <input
-              type="number"
-              id="purchasePrice"
-              name="purchasePrice"
-              placeholder="Purchase Price"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="salePrice"></label>
-            <input
-              type="number"
-              id="salePrice"
-              name="salePrice"
-              PLACEHOLDER="Sale Price"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="shippingCost"></label>
-            <input
-              type="number"
-              id="shippingCost"
-              name="shippingCost"
-              placeholder= "Shipping Cost"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="packagingFees"></label>
-            <input
-              type="number"
-              id="packagingFees"
-              name="packagingFees"
-              placeholder="Packaging Fees"
-              required
-            />
-          </div>
-
-          <button type="submit">Calculate</button>
-        </form>
-      </div>
-      <div id="result">Result</div>
+        <section class="hero">
+            <h1>Welcome to MyBudget</h1>
+            <p>Your personal finance companion</p>
+            <a href="#signup" class="cta-btn">Get Started</a>
+        </section>
     </main>
 
-    <script src="script.js"></script>
-  </body>
+    <footer>
+        <p>&copy; 2024 MyBudget. All rights reserved.</p>
+    </footer>
+</body>
 </html>

@@ -1,18 +1,30 @@
+:root {
+  --primary-blue: #0288d1; /* Couleur principale bleue */
+  --light-blue: #81d4fa;  /* Bleu clair */
+  --medium-blue: #b3e5fc; /* Bleu moyen */
+  --dark-blue: #0277bd;   /* Bleu foncé */
+  --background-color: #e0f7fa; /* Fond bleu clair */
+  --text-color-light: #fff; /* Texte blanc */
+  --text-color-dark: #333;  /* Texte noir pour les sections claires */
+  --border-color: #ccc;    /* Bordure gris clair pour plus de contraste */
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212; /* Fond global sombre */
-  color: #fff;
+  background: linear-gradient(to right, var(--primary-blue), var(--light-blue));
+  color: var(--text-color-light);
 }
 
 .contact {
   padding: 50px;
-  background-color: #1f1f1f; /* Zone de contact plus sombre */
+  background: linear-gradient(to right, var(--primary-blue), var(--light-blue));
   min-height: 100vh;
 }
 
@@ -26,19 +38,19 @@ body {
 
 .contactInfo {
   width: 45%;
-  color: #fff;
+  color: var(--text-color-light); /* Utiliser la couleur de texte claire */
 }
 
 .contactInfo h2 {
   font-size: 36px;
   margin-bottom: 20px;
-  color: #00aaff; /* Couleur bleue pour les titres */
+  color: var(--accent-color); /* Couleur bleue pour les titres */
 }
 
 .contactInfo p {
   margin-bottom: 40px;
   font-size: 18px;
-  color: #ddd; /* Couleur du texte descriptif */
+  color: var(--text-color-light); /* Couleur du texte descriptif */
 }
 
 .box {
@@ -49,37 +61,42 @@ body {
 
 .icon {
   font-size: 24px;
-  background-color: #00aaff; /* Couleur des icônes */
-  color: #fff;
+  background-color: var(--accent-color); 
+  color: var(--text-color-light); 
   padding: 15px;
   border-radius: 50%;
   margin-right: 20px;
 }
 
+.icon svg {
+  fill: var(--text-color-light); /* Couleur des icônes */
+}
+
+
 .text h3 {
   font-size: 20px;
-  color: #00aaff; /* Couleur des titres des informations */
+  color: var(--accent-color); /* Couleur des titres des informations */
   margin-bottom: 5px;
 }
 
 .text p {
   font-size: 16px;
-  color: #ddd; /* Texte en gris clair pour contraste */
+  color: var(--text-color-light); /* Texte en gris clair pour contraste */
 }
 
 .contactForm {
   width: 50%;
   padding: 40px;
-  background-color: #2b2b2b; /* Fond sombre pour le formulaire */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre plus douce */
+  background-color: var(--background-color); /* Couleur de fond claire pour le formulaire */
+  color: var(--text-color-dark); /* Texte sombre pour une meilleure lisibilité */
 }
 
 .contactForm h2 {
   font-size: 28px;
   margin-bottom: 20px;
-  color: #fff;
+  color: var(--text-color-dark); /* Couleur sombre pour les titres */
 }
 
 .inputBox {
@@ -92,20 +109,58 @@ body {
   width: 100%;
   padding: 15px;
   font-size: 18px;
-  color: #ddd;
-  border: 2px solid #444; /* Bordure gris foncé */
+  color: var(--text-color-dark); /* Texte sombre pour les champs de saisie */
+  border: 2px solid var(--border-color); /* Bordure gris clair */
   outline: none;
   border-radius: 6px;
-  background-color: #1a1a1a; /* Fond des champs de texte */
+  background-color: #f9f9f9; /* Fond clair pour les champs de texte */
   transition: border 0.3s ease;
 }
 
-.box svg
-{
-  fill: #fff;
+.inputBox input:focus,
+.inputBox textarea:focus {
+  border-color: var(--primary-blue); /* Bordure bleue au focus */
 }
+
+#button {
+  background-color: var(--primary-blue); /* Couleur de fond du bouton */
+  color: var(--text-color-light); /* Texte du bouton en blanc */
+  padding: 15px 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
 #button:hover {
-  background-color: #00aaff; 
+  background-color: var(--dark-blue); /* Couleur du bouton au survol */
   transform: scale(1.01);
-  transition: 0.3s;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.back-button svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--dark-blue); /* Couleur des icônes de retour */
+  transition: fill 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: var(--light-blue);
+  transform: scale(1.1);
+}
+
+.back-button:hover svg {
+  fill: var(--text-color-light);
 }

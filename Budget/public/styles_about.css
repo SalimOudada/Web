@@ -1,0 +1,150 @@
+/* styles_about_us.css */
+
+/* Global styles */
+body {
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: hsl(199, 92%, 85%);
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s, text-decoration 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #ffdd57; /* Couleur de survol */
+    text-decoration: underline;
+  }
+  
+  /* Main content styles */
+  main {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-us h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 0px;
+  }
+  
+  .about-us h2 {
+    font-size: 2em;
+    color: #007bff;
+    margin-top: 0px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+  }
+  
+  .about-us p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 0px;
+    color: #555;
+  }
+  
+  /* Team section styles */
+  .team {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .team-member {
+    text-align: center;
+    width: 220px;
+    margin-bottom: 20px;
+  }
+  
+  .team-member img {
+    width: 100%;
+    height: 120px;
+    object-fit: fill;
+    border-radius: 70%;
+    border: 4px solid #007bff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .team-member h3 {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+    color: #333;
+  }
+  
+  .team-member p {
+    font-size: 14px;
+    color: #777;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links li {
+    margin: 0 1rem;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: var(--light-blue);
+}
+  
+  /* Footer styles */
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-size: 14px;
+  }
+  
