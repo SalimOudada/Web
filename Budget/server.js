@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
+const secretKey = 'mysecret';
 
 // Initialize environment variables
 dotenv.config();
@@ -19,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // Serve static files f
 
 // MongoDB connection
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mydatabase';
-mongoose.connect("mongodb+srv://vercel-admin-user:mCSmdMKPlGHcsuje@pomme.uycan.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Failed to connect to MongoDB:', err));
 
@@ -45,7 +47,11 @@ app.post('/users', async (req, res) => {
         const user = new User({ email, password: hashedPassword });
         await user.save();
 
-        res.status(201).send('User Created');
+        // Generate JWT token
+        const token = jwt.sign({ _id: user._id }, secretKey, { expiresIn: '1h' });
+
+        // Send response with token
+        res.status(201).json({ message: 'User Created', token });
     } catch (error) {
         console.error('Error creating user:', error);
         res.status(500).send('Server Error');
@@ -66,12 +72,34 @@ app.post('/users/login', async (req, res) => {
         // Compare the provided password with the stored hashed password
         const match = await bcrypt.compare(password, user.password);
         if (match) {
-            res.status(200).send('Success');
+            const token = jwt.sign({ _id: user._id }, secretKey, { expiresIn: '1h' });
+            res.status(200).json({ message: 'Success', token });
         } else {
             res.status(401).send('Not Allowed');
         }
     } catch (error) {
         console.error('Error logging in:', error);
+        res.status(500).send('Server Error');
+    }
+});
+
+app.get('/users', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (error) {
+        console.error('Error getting users:', error);
+        res.status(500).send('Server Error');
+    }
+});
+
+app.delete('/users', async (req, res) => {
+    try {
+        // Supprime tous les utilisateurs dans la collection User
+        await User.deleteMany({});
+        res.status(200).send('All users deleted');
+    } catch (error) {
+        console.error('Error deleting users:', error);
         res.status(500).send('Server Error');
     }
 });
@@ -92,13 +120,13 @@ app.post('/sendEmail', async (req, res) => {
         secure: true,
         service: 'gmail',
         auth: {
-            user: 'mybudgetapp4@gmail.com', 
-            pass: 'ojkqydqxqitrcdqg'  
+            user: 'mybudgetapp4@gmail.com',
+            pass: 'ojkqydqxqitrcdqg'
         }
     });
 
     const mailOptions = {
-        from: 'mybudgetapp4@gmail.com',  
+        from: 'mybudgetapp4@gmail.com',
         to: 'mybudgetapp4@gmail.com',
         subject: subject,
         text: `Message from:
@@ -123,8 +151,6 @@ app.post('/sendEmail', async (req, res) => {
     Best regards,
     The MyBudgetApp Team`
     };
-    
-    
 
     try {
         await transporter.sendMail(mailOptions);
@@ -138,10 +164,65 @@ app.post('/sendEmail', async (req, res) => {
         console.error('Error sending emails:', error);
         res.status(500).send('Error sending emails');
     }
-    
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+const authenticate = (req, res, next) => {
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+
+    if (!token) {
+        return res.status(401).send('Access Denied');
+    }
+
+    try {
+        const verified = jwt.verify(token, secretKey);
+        req.user = verified; // L'ID utilisateur est maintenant accessible via req.user
+        next();
+    } catch (error) {
+        res.status(400).send('Invalid Token');
+    }
+};
+
+const transactionSchema = new mongoose.Schema({
+    amount: { type: Number, required: true },
+    category: { type: String, required: true },
+    date: { type: Date, required: true },
+    type: { type: String, required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+});
+
+const Transaction = mongoose.model('Transaction', transactionSchema);
+
+app.post('/transactions', authenticate, async (req, res) => {
+    const { amount, category, date, type } = req.body;
+
+    try {
+        const transaction = new Transaction({
+            amount,
+            category,
+            date,
+            type,
+            user: req.user._id // Associer l'ID utilisateur au token JWT vérifié
+        });
+        await transaction.save();
+
+        res.status(201).send('Transaction Created');
+    } catch (error) {
+        console.error('Error creating transaction:', error);
+        res.status(500).send('Server Error');
+    }
+});
+
+app.get('/transactions', authenticate, async (req, res) => {
+    try {
+        const transactions = await Transaction.find({ user: req.user._id });
+        res.json(transactions);
+    } catch (error) {
+        console.error('Error getting transactions:', error);
+        res.status(500).send('Server Error');
+    }
 });
