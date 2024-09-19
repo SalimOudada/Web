@@ -1,71 +1,31 @@
 ### Obtenir tous les utilisateurs
 GET http://localhost:3000/users
 
-### Supprimer un utilisateur
+### Supprimer les utilisateurs
 DELETE http://localhost:3000/users
+
+DELETE http://localhost:3000/transactions
 
 ### Créer un nouvel utilisateur
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "email": "John Doe",
-    "password": "password"
+    "email": "Salim",
+    "password": "123"
 }
 
-### Créer un autre utilisateur
-POST http://localhost:3000/users
-Content-Type: application/json
-
-{
-    "email": "sa2lim",
-    "password": "1223"
-}
-
-### Créer un autre utilisateur
-POST http://localhost:3000/users
-Content-Type: application/json
-
-{
-    "email": "sa21lim",
-    "password": "1223"
-}
-
-### Créer encore un autre utilisateur
-POST http://localhost:3000/users
-Content-Type: application/json
-
-{
-    "email": "pomme",
-    "password": "456"
-}
 
 ### Se connecter avec un utilisateur
 POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "email": "John Doe",
-    "password": "password"
-}
-
-### Se connecter avec un autre utilisateur
-POST http://localhost:3000/users/login
-Content-Type: application/json
-
-{
-    "email": "salim.oud@hotmail.fr",
+    "email": "Salim",
     "password": "123"
 }
 
-### Se connecter avec encore un autre utilisateur
-POST http://localhost:3000/users/login
-Content-Type: application/json
 
-{
-    "email": "salim",
-    "password": "123"
-}
 
 ### Créer une transaction
 POST http://localhost:3000/transactions
@@ -79,17 +39,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmVhODFlO
 }
 
 
-### Créer une transaction
-POST http://localhost:3000/transactions
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmVhODIwZmZkZTI1OWYzMGZkNDJmNGQiLCJpYXQiOjE3MjY2NDQ3NTEsImV4cCI6MTcyNjY0ODM1MX0.BnTJlhlfRkkbwGVIG9D1ET5ljsloW-CYfR9qfalM8Os
-
-{
-    "amount": 200,
-    "category": "epicerie",
-    "date": "2021-01-01",
-    "type": "income"
-}
 
 ### Obtenir les transactions
 GET http://localhost:3000/transactions

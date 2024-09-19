@@ -5,10 +5,7 @@ const passwordInput = document.getElementById('password-input');
 const repeatPasswordInput = document.getElementById('repeat-password-input');
 const errorMessage = document.getElementById('error-message');
 
-
-
 form.addEventListener('submit', handleFormSubmit);
-
 
 function handleFormSubmit(e) {
     e.preventDefault();
@@ -45,7 +42,7 @@ function validateSignupForm() {
     if (!passwordInput.value) {
         errors.push('Password is required');
         setInvalid(passwordInput);
-    } else if (passwordInput.value.length < 8) {
+    } else if (passwordInput.value.length < 8) {  // Correction : vérifier que le mot de passe a au moins 8 caractères
         errors.push('Password must be at least 8 characters long');
         setInvalid(passwordInput);
     } else {
@@ -87,7 +84,6 @@ function validateLoginForm() {
 
 function displayErrors(errors) {
     errorMessage.innerText = errors.join('. ');
-    console.log('Errors:', errors);
 }
 
 function setInvalid(input) {
@@ -97,8 +93,6 @@ function setInvalid(input) {
 function setValid(input) {
     input.parentElement.classList.remove('incorrect');
 }
-
-
 
 function submitForm() {
     const url = firstnameInput ? 'http://localhost:3000/users' : 'http://localhost:3000/users/login';
@@ -116,24 +110,29 @@ function submitForm() {
     })
     .then(response => {
         if (!response.ok) {
-            if (response.status === 400) {
+            if (firstnameInput && response.status === 400) {
+                setInvalid(emailInput);
+                throw new Error('Email already in use');
+            } else {
+                setInvalid(emailInput);
+                setInvalid(passwordInput);
                 throw new Error('Email or Password is incorrect');
             }
-            throw new Error('Network response was not ok');
         }
 
-        window.location.replace(response.status === 201 ? 'login.html' : 'main.html');
+        if (response.status === 201) {
+            window.location.replace('login.html');
+        } else if (response.status === 200) {
+            window.location.replace('main.html');
+        }
     })
     .catch(error => {
         console.error('Fetch error:', error);
         errorMessage.innerText = error.message;
-        if (error.message.includes('Email or Password is incorrect')) {
-            setInvalid(emailInput);
-            setInvalid(passwordInput);
-        }
     });
 }
 
+// Event listener for input fields to reset validation on user input
 const allInputs = [firstnameInput, emailInput, passwordInput, repeatPasswordInput].filter(Boolean);
 
 allInputs.forEach(input => {

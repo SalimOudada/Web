@@ -19,9 +19,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
 
+const MONGO_URI = "mongodb+srv://Salim:Naima1606@pomme.uycan.mongodb.net/?retryWrites=true&w=majority&appName=Pomme";
 // MongoDB connection
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mydatabase';
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGO_URI)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Failed to connect to MongoDB:', err));
 
@@ -39,6 +39,12 @@ app.post('/users', async (req, res) => {
     const { email, password } = req.body;
 
     try {
+        // Vérifier si l'utilisateur existe déjà
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: 'Email already in use' });
+        }
+
         // Hash the password
         const salt = await bcrypt.genSalt();
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -57,6 +63,7 @@ app.post('/users', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
 
 // Route to log in a user
 app.post('/users/login', async (req, res) => {
@@ -100,6 +107,16 @@ app.delete('/users', async (req, res) => {
         res.status(200).send('All users deleted');
     } catch (error) {
         console.error('Error deleting users:', error);
+        res.status(500).send('Server Error');
+    }
+});
+
+app.delete('transactions', async (req, res) => {
+    try {
+        await Transaction.deleteMany({});
+        res.status(200).send('All transactions deleted');
+    } catch (error) {
+        console.error('Error deleting transactions:', error);
         res.status(500).send('Server Error');
     }
 });
