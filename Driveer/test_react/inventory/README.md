@@ -15,6 +15,4 @@ Cette application permet aux utilisateurs de se connecter en utilisant des token
 - Authentification : JSON Web Tokens (JWT)
 
 ## Installation
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/votre-utilisateur/votre-depot.git
+
